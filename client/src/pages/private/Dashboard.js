@@ -18,7 +18,9 @@ import {
 import useAuth from '../../hooks/useAuth';
 import DashboardHome from './DashboardHome'
 import AdminRoute from '../../AdminRoute/AdminRoute'
+import LearnersRoute from '../../LearnersRoute/LearnersRoute'
 import ManageAllUsers from './ManageAllUsers';
+import PayOnline from './PayOnline';
 
 
 
@@ -51,7 +53,7 @@ const Dashboard = (props) => {
                     </Box>
                     :
                     <Box>
-                        <Link to={`${url}/pay`}><Button color="inherit">Pay</Button></Link><br />
+                        <Link to={`${url}/pay`}><Button color="inherit">Pay Online</Button></Link><br />
                         <Button onClick={logout} color="inherit">Log Out</Button>
                     </Box>
 
@@ -132,9 +134,9 @@ const Dashboard = (props) => {
                     <Route exact path={path}>
                         <DashboardHome />
                     </Route>
-                    <Route exact path={`${path}/pay`}>
-                        sdas
-                    </Route>
+                    <LearnersRoute exact path={`${path}/pay`}>
+                        <PayOnline />
+                    </LearnersRoute>
 
 
                     <AdminRoute exact path={`${path}/allusers`}>
