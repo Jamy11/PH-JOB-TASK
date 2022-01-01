@@ -9,7 +9,7 @@ const Footer = () => {
 
                     <div className="py-4 flex flex-col justify-center items-center">
                         <h1 className='text-4xl p-4 text-white'>Ride Sharing</h1>
-                        <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">© Developed by CodeCube IT Solution.</p>
+                        <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">© Developed by Jamy.</p>
                     </div>
                 </footer>
             </div>

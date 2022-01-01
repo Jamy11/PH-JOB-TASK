@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import useAuth from '../../hooks/useAuth'
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import useAuth from '../../hooks/useAuth';
 
 const LoginForm = () => {
     const [loginData, setloginData] = useState({});

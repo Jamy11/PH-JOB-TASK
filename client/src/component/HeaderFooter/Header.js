@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
+
 const Header = () => {
     const [show, setShow] = useState(false);
+    const { user, logout } = useAuth()
     return (
-
-
         <div>
             <nav className="w-full bg-gray-100  w-full border-b">
                 <div className="container mx-auto px-6 flex items-center justify-between">
-                    <h1 className='text-4xl p-4'>Ride Sharing</h1>
+                    <Link to={'/'}><h1 className='text-4xl p-4'>Ride Sharing</h1></Link>
+                    
                     <div>
                         <div className="sm:block md:hidden text-gray-500 hover:text-gray-700 focus:text-gray-700 focus:outline-none" onClick={() => setShow(!show)}>
                             {show ? (
@@ -32,21 +35,28 @@ const Header = () => {
                                     </svg>
                                 </div>
                                 <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
-                                    <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0">
-                                        <a href="javascript: void(0)">Feature</a>
-                                    </li>
-                                    <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                        <a href="javascript: void(0)">Marketplace</a>
-                                    </li>
-                                    <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                        <a href="javascript: void(0)">Company</a>
-                                    </li>
-                                    <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                        <a href="javascript: void(0)">Features</a>
-                                    </li>
-                                    <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                        <a href="javascript: void(0)">Contact</a>
-                                    </li>
+                                    {user?.email ?
+                                        <>
+                                            <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                                Welcome, {user.displayName}
+                                            </li>
+                                            <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                                <Link to='/dashboard'>Dashboard</Link>
+                                            </li>
+
+                                            <button className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10" onClick={logout} variant="text">Log Out</button>
+                                        </>
+                                        :
+                                        <>
+                                            <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                                <Link to='/login'>Login</Link>
+                                            </li>
+                                            <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                                <Link to='/dashboard'>Dashboard</Link>
+                                            </li>
+                                        </>
+                                    }
+
                                 </ul>
                             </div>}
 
@@ -61,15 +71,28 @@ const Header = () => {
                             </div>
                             <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
 
-                                <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <Link to='/login'>Login</Link>
-                                </li>
-                                <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <Link to='/login'>Dashboard</Link>
-                                </li>
-                                <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <Link to='/login'>Contact Us</Link>
-                                </li>
+                                {user?.email ?
+                                    <>
+                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                            Welcome, {user.displayName}
+                                        </li>
+                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                            <Link to='/dashboard'>Dashboard</Link>
+                                        </li>
+
+                                        <button className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10" onClick={logout} variant="text">Log Out</button>
+                                    </>
+                                    :
+                                    <>
+                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                            <Link to='/login'>Login</Link>
+                                        </li>
+                                        <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
+                                            <Link to='/dashboard'>Dashboard</Link>
+                                        </li>
+                                    </>
+                                }
+
                             </ul>
                         </div>
                     </div>

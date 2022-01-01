@@ -2,9 +2,9 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 import { CircularProgress } from '@mui/material'
-import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
-const RegisterFormRider = () => {
+const RegisterFormLearner = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { registerUser, isLoading } = useAuth()
     const history = useHistory();
@@ -28,7 +28,7 @@ const RegisterFormRider = () => {
             <div className="flex flex-col items-center justify-center">
                 <div className="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16">
                     <p tabIndex={0} role="heading" aria-label="Login to your account" className="text-2xl font-extrabold leading-6 text-gray-800">
-                        Register as Rider
+                        Register as Learner
                     </p>
 
 
@@ -70,12 +70,7 @@ const RegisterFormRider = () => {
                                 <input type='number'  {...register("phone", { required: true })} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" />
                             </div>
 
-                            <div className="mb-6">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                                    Driving License Picture
-                                </label>
-                                <input {...register("d_l_picture", { required: true })} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" />
-                            </div>
+
 
                             <div className="mb-6">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
@@ -89,12 +84,7 @@ const RegisterFormRider = () => {
                                 </label>
                                 <input {...register("profile_picture", { required: true })} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" />
                             </div>
-                            <div className="mb-6">
-                                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-                                    Car Information
-                                </label>
-                                <input {...register("car_info", { required: true })} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" />
-                            </div>
+
                             <div className="mb-6">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                                     Passowrd
@@ -139,4 +129,4 @@ const RegisterFormRider = () => {
     )
 }
 
-export default RegisterFormRider
+export default RegisterFormLearner
