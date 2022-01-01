@@ -3,6 +3,7 @@ const app = express()
 const cors = require('cors');
 require('dotenv').config();
 const { MongoClient } = require('mongodb');
+const ObjectId = require('mongodb').ObjectId
 
 const port = process.env.PORT || 5000;
 
@@ -44,9 +45,24 @@ async function run() {
             const cursor = usersCollection.find({})
             const result = await cursor.toArray()
             const resWithoutAdmin = result.filter(obj=> obj.type !== 'admin')
-            console.log(resWithoutAdmin)
-
             res.json(resWithoutAdmin)
+        })
+
+        // block or unblock user
+        app.put('/users/', async (req, res) => {
+            const user = req.body;
+            let block = ''
+            if(user.block_status === undefined || user.block_status === '' || user.block_status === null || user.block_status == 'false'){
+                block = true
+            }
+            else{
+                block = false
+            }
+            const filter = { _id: ObjectId(user._id) };
+            const options = { upsert: true };
+            const updateDoc = { $set: {block_status : block} };
+            const result = await usersCollection.updateOne(filter, updateDoc, options );
+            res.json(result);
         })
         
     }

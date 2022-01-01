@@ -13,6 +13,7 @@ const RegisterFormLearner = () => {
         if (data['password'].length >= 6 && data['password'] === data['con_pass'] && parseInt(data['age']) < 100) {
             delete data.con_pass; 
             data.type = 'learner' 
+            data.block_status = 'false' 
             registerUser(data.email, data.password, data.fullname, history , data);
         }
         else {
