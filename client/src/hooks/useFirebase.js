@@ -13,14 +13,14 @@ const useFirebase = () => {
 
     const auth = getAuth();
 
-    const registerUser = (email, password , name , history) => {
+    const registerUser = (email, password , name , history , data) => {
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password , name)
             .then((userCredential) => {
                 setAuthError('');
                 
                 setUser({displayName:name,email})
-
+                saveUser(email, name, 'POST' , data);
 
 
                 updateProfile(auth.currentUser, {
@@ -63,11 +63,11 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
-    // useEffect(() => {
-    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setAdmin(data.admin))
-    // }, [user.email])
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     const logout = () => {
         setIsLoading(true);
@@ -79,7 +79,18 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
- 
+    const saveUser = (email, displayName, method , data) => {
+
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/users`, {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then()
+    }
+
     return {
         user,
         isLoading,

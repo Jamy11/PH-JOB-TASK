@@ -11,7 +11,9 @@ const RegisterFormLearner = () => {
 
     const onSubmit = data => {
         if (data['password'].length >= 6 && data['password'] === data['con_pass'] && parseInt(data['age']) < 100) {
-            registerUser(data.email, data.password, data.fullname, history);
+            delete data.con_pass; 
+            data.type = 'learner' 
+            registerUser(data.email, data.password, data.fullname, history , data);
         }
         else {
             alert('Password does not match or must be atleast 7')
