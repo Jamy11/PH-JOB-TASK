@@ -44,7 +44,7 @@ const Dashboard = (props) => {
             <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
             {
 
-                admin ?
+                admin === 'admin'?
                     <Box>
                         <Link to={`${url}/allusers`}><Button color="inherit">Manage All Users</Button></Link><br />
                         <Button onClick={logout} color="inherit">Log Out</Button>
@@ -52,6 +52,7 @@ const Dashboard = (props) => {
                     :
                     <Box>
                         <Link to={`${url}/pay`}><Button color="inherit">Pay</Button></Link><br />
+                        <Button onClick={logout} color="inherit">Log Out</Button>
                     </Box>
 
             }

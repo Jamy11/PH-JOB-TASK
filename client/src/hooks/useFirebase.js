@@ -8,7 +8,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
-    const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState('');
     const [status, setStatus] =useState('')
 
     const auth = getAuth();
@@ -66,7 +66,7 @@ const useFirebase = () => {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data.admin))
+            .then(data => setAdmin(data.type))
     }, [user.email])
 
     const logout = () => {

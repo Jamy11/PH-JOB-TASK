@@ -33,11 +33,11 @@ async function run() {
             const email = req.params.email;
             const query = { email: email };
             const user = await usersCollection.findOne(query);
-            let isAdmin = false;
-            if (user?.type === 'admin') {
-                isAdmin = true;
+            let isAdmin = '';
+            if (user?.type ) {
+                isAdmin = user.type;
             }
-            res.json({ admin: isAdmin });
+            res.json({ type: isAdmin });
         })
 
         // get all the users
