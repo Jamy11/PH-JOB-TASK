@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 const Header = () => {
     const [show, setShow] = useState(false);
     return (
@@ -62,13 +62,13 @@ const Header = () => {
                             <ul className="flex text-3xl md:text-base items-center py-10 md:flex flex-col md:flex-row justify-center fixed md:relative top-0 bottom-0 left-0 right-0 bg-white md:bg-transparent z-20">
 
                                 <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <a href="javascript: void(0)">Login</a>
+                                    <Link to='/login'>Login</Link>
                                 </li>
                                 <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <a href="javascript: void(0)">Dashboard</a>
+                                    <Link to='/login'>Dashboard</Link>
                                 </li>
                                 <li className="text-gray-800 hover:text-gray-900 cursor-pointer lg:text-lg pt-10 md:pt-0 md:ml-5 lg:ml-10">
-                                    <a href="javascript: void(0)">Contact Us</a>
+                                    <Link to='/login'>Contact Us</Link>
                                 </li>
                             </ul>
                         </div>
