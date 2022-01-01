@@ -24,8 +24,20 @@ async function run() {
             const result = await usersCollection.insertOne(user);
             console.log(result);
             res.json(result);
-            console.log('fired')
         });
+
+
+        app.get('/users/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email: email };
+            const user = await usersCollection.findOne(query);
+            let isAdmin = false;
+            if (user?.type === 'admin') {
+                isAdmin = true;
+            }
+            console.log(user)
+            res.json({ admin: isAdmin });
+        })
         
     }
     finally {

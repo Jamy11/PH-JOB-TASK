@@ -6,6 +6,8 @@ import AuthProvider from './context/AuthProvider';
 import RegisterRider from './pages/auth/RegisterRider';
 import Login from './pages/auth/Login';
 import RegisterLearner from './pages/auth/RegisterLearner';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import Dashboard from './pages/private/Dashboard';
 
 function App() {
   return (
@@ -17,6 +19,9 @@ function App() {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register-rider' component={RegisterRider} />
             <Route exact path='/register-learner' component={RegisterLearner} />
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
           </Switch>
         </Router>
       </AuthProvider>
