@@ -1,5 +1,5 @@
 import React from 'react'
-const Footer2 = () => {
+const Footer = () => {
 
     return (
         <div>
@@ -8,7 +8,7 @@ const Footer2 = () => {
 
 
                     <div className="py-4 flex flex-col justify-center items-center">
-                        <img className="w-16" src={logo} alt="" />
+                        <h1 className='text-4xl p-4 text-white'>Ride Sharing</h1>
                         <p className="mt-6 text-xs lg:text-sm leading-none text-gray-900 dark:text-gray-50">© Developed by CodeCube IT Solution.</p>
                     </div>
                 </footer>
@@ -17,4 +17,4 @@ const Footer2 = () => {
     )
 }
 
-export default Footer2
+export default Footer

@@ -1,11 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-import Header from './component/HeaderFooter/Header';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Home from './pages/public/Home';
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </Router>
+
     </div>
   );
 }
