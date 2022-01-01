@@ -18,6 +18,7 @@ import {
 import useAuth from '../../hooks/useAuth';
 import DashboardHome from './DashboardHome'
 import AdminRoute from '../../AdminRoute/AdminRoute'
+import ManageAllUsers from './ManageAllUsers';
 
 
 
@@ -136,7 +137,7 @@ const Dashboard = (props) => {
 
 
                     <AdminRoute exact path={`${path}/allusers`}>
-                        asd
+                        <ManageAllUsers />
                     </AdminRoute>
                     
                     

@@ -19,6 +19,7 @@ async function run() {
         const database = client.db('phjob')
         const usersCollection = database.collection('users');
 
+        // registraion add user to database
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
@@ -26,7 +27,7 @@ async function run() {
             res.json(result);
         });
 
-
+        //check admin
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -35,8 +36,17 @@ async function run() {
             if (user?.type === 'admin') {
                 isAdmin = true;
             }
-            console.log(user)
             res.json({ admin: isAdmin });
+        })
+
+        // get all the users
+        app.get('/users', async (req, res) => {
+            const cursor = usersCollection.find({})
+            const result = await cursor.toArray()
+            const resWithoutAdmin = result.filter(obj=> obj.type !== 'admin')
+            console.log(resWithoutAdmin)
+
+            res.json(resWithoutAdmin)
         })
         
     }
